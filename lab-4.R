@@ -123,26 +123,26 @@ rt.sample <- c(391.5845, 411.9970, 358.6373, 505.3099, 616.2892, 481.0751, 422.3
 # hint: sum() adds the numbers in a vector. log() is the natural log function, or log=T for dnorm().
 
 # 1) mean 350, sd 50
-# answer needed here.
+sum(dnorm(rt.sample, mean = 350, sd = 50, log=T))
 
 # 2) mean 400, sd 50
-# answer needed here.
+sum(dnorm(rt.sample, mean = 400, sd = 50, log=T))
 
 # 3) mean 450, sd 50
-# answer needed here.
+sum(dnorm(rt.sample, mean = 450, sd = 50, log=T))
 
 # 4) mean 350, sd 100
-# answer needed here.
+sum(dnorm(rt.sample, mean = 350, sd = 100, log=T))
 
 # 5) mean 400, sd 100
-# answer needed here.
+sum(dnorm(rt.sample, mean = 4000, sd = 100, log=T))
 
 # 6) mean 450, sd 100
-# answer needed here.
+sum(dnorm(rt.sample, mean = 450, sd = 100, log=T))
 
 # which parameter set has the highest likelihood?
 
-# answer needed here.
+#mean = 400, sd = 100
 
 # here is a set of data for a subject in a categorization experiment, modeled with GCM.
 # calculate the log likelihood of the parameters in the model (which i am not showing you).
@@ -155,7 +155,13 @@ gcm.practice.data <- data.frame(correct.response = c(T, T, T, T, F, T, T, F, T, 
                                 gcm.probability.correct = c(0.84, 0.80, 0.84, 0.80, 0.79, 0.86, 0.89, 0.87, 0.69, 0.85, 0.75,
                                                             0.74, 0.82, 0.85, 0.87, 0.69, 0.83, 0.87, 0.80, 0.76))
 
-# answer needed here.
+gcm.practice.data$outcome.prob <- mapply(function(prob, response){
+  if(response = T){
+    return(prob)
+  }else{
+    return(1-prob)
+  }
+  }, gcm.practice.data$gcm.probability.correct, gcm.practice.data$correct.response)
 
 #### maximum likelihood estimation ####
 
