@@ -82,14 +82,17 @@ hist(hist.sample, xlim=c(0,100)) # compare this plot to the line above.
 # generate 100 samples from a normal distribution with mean 0 and standard deviation 10.
 # then use hist() to create a histogram of these samples.
 
-# answer needed here.
+norm.prob <- rnorm(100, mean = 0, sd = 10)
+hist(norm.prob)
 
 # now plot the probability density function of this distribution.
 # use the same strategy as you did above with the binomial to find the density of the normal
 # distribution with mean 0 and sd 10 for values between -50 and 50. the distribution is continuous
 # so, choose a reasonably small step size between values (remember the seq() function).
 
-# answer needed here.
+samples <- seq(from = -50, to = 50, by = 0.25)
+prob.density <- dnorm(samples, mean = 0, sd = 10)
+plot(samples, prob.density, type = "l")
 
 #### practice calculating likelihoods ####
 
@@ -102,11 +105,13 @@ esp.practice.data <- data.frame(subject=1:10, n.correct=c(11,10,6,10,6,12,10,8,9
 # of the probability of success parameter: 0.4, 0.5, and 0.6.
 # hint: prod() will multiple all elements of a vector together.
 
-# answer needed here.
+prod(dbinom(esp.practice.data$n.correct, 20, 0.4))
+prod(dbinom(esp.practice.data$n.correct, 20, 0.5))
+prod(dbinom(esp.practice.data$n.correct, 20, 0.6))
 
 # which parameter value of those options is most likely?
 
-# answer here.
+#The probability of success being 0.50.
 
 # here is a sample of response times for a single subject from a rapid decision making experiment.
 rt.sample <- c(391.5845, 411.9970, 358.6373, 505.3099, 616.2892, 481.0751, 422.3132, 511.7213, 205.2692, 522.3433, 370.1850,
