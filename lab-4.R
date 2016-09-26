@@ -192,8 +192,10 @@ same.diff.data.theta
 plot(theta, same.diff.data.theta)
 
 # the "true" underlying value i used to generate the data was 0.75. does that match up with the grid search?
-#it does match up with the grid search because the probability for 0.75 is right at the peak of the distribution
-#RETURN TO THIS
+
+max(same.diff.data.theta)
+theta[match(max(same.diff.data.theta), same.diff.data.theta)]
+#the max of the grid search is 0.76, so it almost matches
 
 ## mle with optim()
 
