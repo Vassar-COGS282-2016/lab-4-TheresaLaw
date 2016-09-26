@@ -178,15 +178,22 @@ same.diff.data <- c(32, 29, 31, 34, 26, 29, 31, 34, 29, 31, 30, 29, 31, 34, 33, 
 # we can model this experiment's data as 40 coin flips for each subject. use grid search to plot the likelihood
 # function for values of theta (probability of a correct response) between 0.5 and 0.9, in steps of 0.01.
 # start by writing a function that calculates the likelihood (not log) for the entire set of data given a value of theta.
+theta <- seq(from = 0.5, to = 0.9, by = 0.01)
 
-# answer needed here.
+same.diff.data.likelihood <- function(theta){sum(dbinom(same.diff.data, 40, theta))}
+
 
 # then use sapply to run the function for each possible value of theta in the set. use seq() to generate the
 # set of possible values. plot the set of values on the x axis and the corresponding likelihoods on the y axis.
 
-# answer needed here.
+same.diff.data.theta <- sapply(theta, same.diff.data.likelihood)
+
+same.diff.data.theta
+plot(theta, same.diff.data.theta)
 
 # the "true" underlying value i used to generate the data was 0.75. does that match up with the grid search?
+#it does match up with the grid search because the probability for 0.75 is right at the peak of the distribution
+#RETURN TO THIS
 
 ## mle with optim()
 
@@ -199,17 +206,25 @@ same.diff.data <- c(32, 29, 31, 34, 26, 29, 31, 34, 29, 31, 30, 29, 31, 34, 33, 
 # create a vector of x values from 0 to 100, and the corresponding vector of y values,
 # then plot these with x values on the x axis, and y values on the y axis.
 
-# answer needed here.
+x <- seq(0,100)
+y <- function(x){
+  return(4 + 0.8*x)
+}
+
+plot(x, y(x), type = "l")
 
 # now let's assume that the relationship between x and y isn't perfect. there's a bit of random
 # noise. add a random sample from a normal distribution with mean 0 and sd 10 to each y value.
 # hint: there are 101 y values, so you need 101 samples.
 
-# answer needed here.
+y.noise <- function(x){
+  return(4 + 0.8*x + rnorm(101, mean = 0, sd = 10))
+}
+y.noise(x)
 
 # plot the data again, with the new noisy y values.
 
-# answer needed here.
+plot(x, y.noise(x))
 
 # there are three parameter values that control this plot,
 # the intercept of the line: 4
